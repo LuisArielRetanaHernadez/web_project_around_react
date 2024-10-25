@@ -1,4 +1,8 @@
 import { React } from 'react'
+
+import closeImage from '../images/close.png'
+
+
 const PopupWithForm = (props) => {
   return (
     <div className={`popup ${props.selector}  ${props.isOpen ? 'popup--active' : ''}`}>
@@ -6,7 +10,7 @@ const PopupWithForm = (props) => {
         <span className="icon popup__icon-close">
           <img
             className="icon__image popup__icon-close-image"
-            src="<%= require('./images/close.png')%>"
+            src={closeImage}
             alt="icon delete"
           />
         </span>
