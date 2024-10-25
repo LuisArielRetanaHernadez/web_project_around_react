@@ -1,6 +1,25 @@
+import Api from "../utils/Api"
+import PopupWithForm from "../utils/PopupWithForm"
+
+// constst 
+import {
+  URL_BASE,
+  GroupId,
+  TOKEN
+} from '../contast/contast'
 
 
 const Main = () => {
+
+  const api = new Api({
+    baseUrl: `${URL_BASE}/v1/${GroupId}`,
+    headers: {
+      authorization: TOKEN,
+      'Content-Type': 'application/json'
+    }
+  })
+
+
   return (
     <main className="content">
       <section className="profile content__seccion">
