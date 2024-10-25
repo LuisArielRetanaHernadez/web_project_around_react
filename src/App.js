@@ -1,5 +1,7 @@
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
+import Main from './components/Main';
 
 function App() {
   return (
@@ -7,9 +9,9 @@ function App() {
       {/* header elements */}
       <Header />
       {/* main elements */}
-
+      <Main />
       {/* footer elements */}
-
+      <Footer />
       {/* <!-- Popup to open the create card form --> */}
       <div className="popup popup--create-card">
         <div className="popup__card">
