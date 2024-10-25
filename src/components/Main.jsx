@@ -10,6 +10,7 @@ import heartImage from '../images/heart.svg'
 import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
+import { useState } from "react"
 
 
 const Main = ({
@@ -17,6 +18,10 @@ const Main = ({
   onAddPlaceClick,
   onEditAvatarClick
 }) => {
+
+  const [userName, setUserName] = useState('')
+  const [userDescription, setUserDescription] = useState('')
+  const [userAvatar, setUserAvatar] = useState('')
 
 
   return (
