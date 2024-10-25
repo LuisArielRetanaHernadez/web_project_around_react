@@ -19,11 +19,22 @@ const Main = () => {
     }
   })
 
+  const handleEditAvatarClick = () => {
+    document.querySelector('.popup--update-profile').classList.add('popup--active')
+  }
+
+  const handleEditProfileClick = () => {
+    document.querySelector('.popup--update-profile').classList.add('popup--active')
+  }
+
+  const handleAddPlaceClick = () => {
+    document.querySelector('.popup--create-card').classList.add('popup--active')
+  }
 
   return (
     <main className="content">
       <section className="profile content__seccion">
-        <div className="profile__content-image">
+        <div className="profile__content-image" onClick={handleEditAvatarClick}>
           <div className="profile__image-update-content">
             <span className="icon">
               <img
@@ -42,7 +53,7 @@ const Main = () => {
 
         <div className="profile__about">
           <div className="profile__content-username-button">
-            <span className="button profile__button-update-profile">
+            <span className="button profile__button-update-profile" onClick={handleEditProfileClick}>
               <img
                 className="profile__button-update-profile-image profile__button-update-profile-image_hidden-hover"
                 src="<%= require('./images/diagonal.svg')%>"
@@ -60,7 +71,7 @@ const Main = () => {
           <p className="profile__state">Explorador</p>
         </div>
 
-        <button className="button profile__button-add-target">
+        <button className="button profile__button-add-target" onClick={handleAddPlaceClick}>
           <img
             className="profile__button-add-target-image"
             src="<%= require('./images/plus.svg')%>"
