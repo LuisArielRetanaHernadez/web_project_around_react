@@ -10,7 +10,7 @@ import heartImage from '../images/heart.svg'
 import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const Main = ({
@@ -23,7 +23,21 @@ const Main = ({
   const [userDescription, setUserDescription] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
 
+  useEffect(() => {
+    const loadInformationUserCurrent = async () => {
+      try {
+        const response = await api.getUserInfo()
+        setUserName(response.name)
+        setUserDescription(response.about)
+        setUserAvatar(response.avatar)
+      } catch (error) {
 
+      }
+    }
+
+    loadInformationUserCurrent()
+
+  })
   return (
     <main className="content">
       <section className="profile content__seccion">
@@ -39,7 +53,7 @@ const Main = ({
           </div>
           <img
             className="profile__image"
-            src="https://images.unsplash.com/photo-1718414738167-0dd5de626229?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={userAvatar}
             alt="avatar user me"
           />
         </div>
@@ -58,10 +72,10 @@ const Main = ({
                 alt="icon diagonal hover"
               />
             </span>
-            <p className="profile__name">Mr Murad</p>
+            <p className="profile__name">{userName}</p>
           </div>
 
-          <p className="profile__state">Explorador</p>
+          <p className="profile__state">{userDescription}</p>
         </div>
 
         <button className="button profile__button-add-target" onClick={onAddPlaceClick}>
