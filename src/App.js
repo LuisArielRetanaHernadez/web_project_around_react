@@ -3,15 +3,7 @@ import './App.css';
 function App() {
   return (
     <div class="page">
-      <header className="header page__header">
-        <figure className="logo header__logo">
-          <img
-            className="logo__image"
-            src="<%= require('./images/Vector.svg')%>"
-            alt=""
-          />
-        </figure>
-      </header>
+      {/* header elements */}
       <main className="content">
         <section className="profile content__seccion">
           <div className="profile__content-image">
