@@ -15,7 +15,7 @@ const Card = (props) => {
         />
       </span>
       <div class="card__content-image elements__photo-content-image">
-        <img class="card__image" alt={props.name || 'ilustract'} />
+        <img class="card__image" src={props.url} alt={props.title || 'ilustract'} />
       </div>
       <figcaption class="card__about elements__photo-about">
         <p class="card__title">{props.title}</p>
@@ -37,7 +37,9 @@ const Card = (props) => {
               alt="icon love active"
             />
           </span>
-          <span class="card__likes-count"></span>
+          <span class="card__likes-count">
+            {props.likes.length}
+          </span>
         </div>
       </figcaption>
     </figure>

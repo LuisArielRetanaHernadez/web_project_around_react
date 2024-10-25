@@ -11,6 +11,7 @@ import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
 import { useEffect, useState } from "react"
+import Card from "./Card.jsx"
 
 
 const Main = ({
@@ -22,6 +23,8 @@ const Main = ({
   const [userName, setUserName] = useState('')
   const [userDescription, setUserDescription] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
+
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
     const loadInformationUserCurrent = async () => {
@@ -35,9 +38,21 @@ const Main = ({
       }
     }
 
+    const loadCardsInitial = async () => {
+      try {
+        const response = await api.getInitialCards()
+        setCards(response)
+      } catch (error) {
+
+      }
+    }
+
+    loadCardsInitial()
+
     loadInformationUserCurrent()
 
   })
+
   return (
     <main className="content">
       <section className="profile content__seccion">
@@ -87,7 +102,12 @@ const Main = ({
         </button>
       </section>
       <section className="elements content__seccion">
-        <div className="elements__cards"></div>
+        <div className="elements__cards">
+          {/* <!-- Card --> */}
+          {cards.length > 0 && cards.map((card, index) => (
+            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} />
+          ))}
+        </div>
         <template id="template-card">
           <figure className="card elements__card">
             <span className="icon card__icon-delete">
