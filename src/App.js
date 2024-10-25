@@ -25,6 +25,13 @@ function App() {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(prev => !prev)
   }
+
+  const closeAllPopups = () => {
+    setIsEditProfilePopupOpen(false)
+    setIsAddPlacePopupOpen(false)
+    setIsEditAvatarPopupOpen(false)
+  }
+
   return (
     <div class="page">
       {/* header elements */}
@@ -40,7 +47,7 @@ function App() {
       <Footer />
       {/* <!-- Popup to open the create card form --> */}
 
-      <PopupWithForm title="Agregar una nueva tarjeta" selector=".popup--create-card" isOpen={isAddPlacePopupOpen} >
+      <PopupWithForm title="Agregar una nueva tarjeta" selector=".popup--create-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} >
         <form className="form popup__form" action="">
           <div className="form__field-component">
             <input
@@ -85,7 +92,7 @@ function App() {
       </PopupWithForm>
       {/* <!-- Popup to open the update profile form --> */}
 
-      <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} >
+      <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
         <form className="form popup__form" action="">
           <div className="form__field-component">
             <input
