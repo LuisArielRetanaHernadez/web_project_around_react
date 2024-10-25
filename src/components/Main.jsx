@@ -1,4 +1,4 @@
-import Api from "../utils/Api"
+import Api from "../utils/Api.js"
 import PopupWithForm from "../utils/PopupWithForm"
 
 // constst 
