@@ -1,5 +1,15 @@
 import Api from "../utils/Api.js"
-import PopupWithForm from "../utils/PopupWithForm"
+
+// images
+import plusImage from '../images/plus.svg'
+import diagonalImage from '../images/diagonal.svg'
+import diagonalHoverImage from '../images/diagonal-hover.svg'
+import penImage from '../images/pen.svg'
+import deleteImage from '../images/delete.svg'
+import heartImage from '../images/heart.svg'
+import heartHoverImage from '../images/heart-hover.svg'
+import heartActiveImage from '../images/heart-active.svg'
+import closeImage from '../images/close.png'
 
 // constst 
 import {
@@ -31,7 +41,7 @@ const Main = ({
             <span className="icon">
               <img
                 className="icon__image"
-                src="<%= require('./images/pen.svg')%>"
+                src={penImage}
                 alt='icon'
               />
             </span>
@@ -48,12 +58,12 @@ const Main = ({
             <span className="button profile__button-update-profile" onClick={onEditProfileClick}>
               <img
                 className="profile__button-update-profile-image profile__button-update-profile-image_hidden-hover"
-                src="<%= require('./images/diagonal.svg')%>"
+                src={diagonalImage}
                 alt="icon diagonal"
               />
               <img
                 className="profile__button-update-profile-image profile__button-update-profile-image_show-hover"
-                src="<%= require('./images/diagonal-hover.svg')%>"
+                src={diagonalHoverImage}
                 alt="icon diagonal hover"
               />
             </span>
@@ -66,7 +76,7 @@ const Main = ({
         <button className="button profile__button-add-target" onClick={onAddPlaceClick}>
           <img
             className="profile__button-add-target-image"
-            src="<%= require('./images/plus.svg')%>"
+            src={plusImage}
             alt="icon plus"
           />
         </button>
@@ -77,7 +87,7 @@ const Main = ({
           <figure className="card elements__card">
             <span className="icon card__icon-delete">
               <img
-                src="<%= require('./images/delete.svg')%>"
+                src={deleteImage}
                 alt='delete icon'
                 className="icon__image card__icon-delete-image"
               />
@@ -91,17 +101,17 @@ const Main = ({
                 <span className="icon card__icon-love">
                   <img
                     className="card__icon-love-image card__icon-love-image_standar"
-                    src="<%= require('./images/heart.svg')%>"
+                    src={heartImage}
                     alt="icon love"
                   />
                   <img
                     className="card__icon-love-image card__icon-love-image_hover"
-                    src="<%= require('./images/heart-hover.svg')%>"
+                    src={heartHoverImage}
                     alt="icon love hover"
                   />
                   <img
                     className="card__icon-love-image card__icon-love-image_active"
-                    src="<%= require('./images/heart-active.svg')%>"
+                    src={heartActiveImage}
                     alt="icon love active"
                   />
                 </span>
@@ -117,7 +127,7 @@ const Main = ({
           <span className="icon popup__icon-close">
             <img
               className="icon__image popup__icon-close-image"
-              src="<%= require('./images/close.png')%>"
+              src={closeImage}
               alt="icon delete"
             />
           </span>
@@ -177,7 +187,7 @@ const Main = ({
           <span className="icon popup__icon-close">
             <img
               className="icon__image popup__icon-close-image"
-              src="<%= require('./images/close.png')%>"
+              src={closeImage}
               alt="icon delete"
             />
           </span>
@@ -195,7 +205,7 @@ const Main = ({
           <span className="icon popup__icon-close">
             <img
               className="icon__image popup__icon-close-image"
-              src="<%= require('./images/close.png')%>"
+              src={closeImage}
               alt="icon delete"
             />
           </span>
@@ -234,7 +244,7 @@ const Main = ({
           <span className="icon popup__icon-close">
             <img
               className="icon__image popup__icon-close-image"
-              src="<%= require('./images/close.png')%>"
+              src={closeImage}
               alt="icon delete"
             />
           </span>
