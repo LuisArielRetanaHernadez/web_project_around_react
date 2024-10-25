@@ -1,4 +1,4 @@
-import Api from "../utils/Api.js"
+import api from "../utils/api.js"
 
 // images
 import plusImage from '../images/plus.svg'
@@ -11,13 +11,6 @@ import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
 
-// constst 
-import {
-  URL_BASE,
-  GroupId,
-  TOKEN
-} from '../contast/contast'
-
 
 const Main = ({
   onEditProfileClick,
@@ -25,13 +18,6 @@ const Main = ({
   onEditAvatarClick
 }) => {
 
-  const api = new Api({
-    baseUrl: `${URL_BASE}/v1/${GroupId}`,
-    headers: {
-      authorization: TOKEN,
-      'Content-Type': 'application/json'
-    }
-  })
 
   return (
     <main className="content">

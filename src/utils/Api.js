@@ -3,7 +3,7 @@ import {
   TOKEN,
   URL_BASE,
   GroupId
-} from './constants.js';
+} from '../contast/contast';
 
 class Api {
   constructor(options) {
@@ -141,4 +141,4 @@ const api = new Api({
   }
 });
 
-export default api;
+export default api
