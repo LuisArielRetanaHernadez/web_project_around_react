@@ -1,13 +1,15 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url(../vendor/normalize.css);
+@import url(../blocks/global.css);
+@import url(../vendor/fonts.css);
+@import url(../blocks/page.css);
+@import url(../blocks/icon.css);
+@import url(../blocks/button.css);
+@import url(../blocks/form.css);
+@import url(../blocks/container.css);
+@import url(../blocks/header.css);
+@import url(../blocks/content.css);
+@import url(../blocks/profile.css);
+@import url(../blocks/elements.css);
+@import url(../blocks/photo.css);
+@import url(../blocks/poppa.css);
+@import url(../blocks/footer.css);
