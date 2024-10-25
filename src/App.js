@@ -7,9 +7,8 @@ function App() {
       {/* header elements */}
       <Header />
       {/* main elements */}
-      <footer class="footer page__footer">
-        <p class="footer__author">&copy; Luis Ariel Retana Hernandez</p>
-      </footer>
+
+      {/* footer elements */}
 
       {/* <!-- Popup to open the create card form --> */}
       <div className="popup popup--create-card">
