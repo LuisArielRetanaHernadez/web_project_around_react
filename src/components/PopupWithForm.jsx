@@ -13,7 +13,8 @@ const PopupWithForm = (props) => {
         <h2 className="popup__title">{props.title}</h2>
 
         <div className="popup__content">
-          <form className="form popup__form" action="">
+          {props.children}
+          {/* <form className="form popup__form" action="">
             <div className="form__field-component">
               <input
                 className="form__input popup__form-input"
@@ -52,7 +53,7 @@ const PopupWithForm = (props) => {
             >
               Guardar
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </div>
