@@ -1,9 +1,11 @@
 import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <div class="page">
       {/* header elements */}
+      <Header />
       <main className="content">
         <section className="profile content__seccion">
           <div className="profile__content-image">
