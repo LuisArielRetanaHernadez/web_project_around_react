@@ -1,4 +1,11 @@
-export default class Api {
+// constat
+import {
+  TOKEN,
+  URL_BASE,
+  GroupId
+} from './constants.js';
+
+class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
@@ -125,3 +132,13 @@ export default class Api {
     return await Promise.reject(`Error: ${res.status}`);
   }
 }
+
+const api = new Api({
+  baseUrl: `${URL_BASE}/v1/${GroupId}`,
+  headers: {
+    authorization: TOKEN,
+    "Content-Type": "application/json"
+  }
+});
+
+export default api;
