@@ -15,7 +15,7 @@ function App() {
 
 
   const handleEditAvatarClick = () => {
-    setIsEditProfilePopupOpen(prev => !prev)
+    setIsEditAvatarPopupOpen(prev => !prev)
   }
 
   const handleEditProfileClick = () => {
