@@ -17,7 +17,8 @@ import Card from "./Card.jsx"
 const Main = ({
   onEditProfileClick,
   onAddPlaceClick,
-  onEditAvatarClick
+  onEditAvatarClick,
+  onCardClick
 }) => {
 
   const [userName, setUserName] = useState('')
@@ -51,7 +52,7 @@ const Main = ({
 
     loadInformationUserCurrent()
 
-  })
+  }, [])
 
   return (
     <main className="content">
@@ -105,7 +106,7 @@ const Main = ({
         <div className="elements__cards">
           {/* <!-- Card --> */}
           {cards.length > 0 && cards.map((card, index) => (
-            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} />
+            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} />
           ))}
         </div>
         <template id="template-card">

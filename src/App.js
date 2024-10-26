@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
 import PopupWithForm from './components/PopupWithForm';
+import ImagePopup from './components/ImagePopup';
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [selectedCard, setSelectedCard] = useState(null)
 
 
   const handleEditAvatarClick = () => {
@@ -26,10 +27,16 @@ function App() {
     setIsAddPlacePopupOpen(prev => !prev)
   }
 
+  const handleCardClick = (card) => {
+    console.log(card)
+    setSelectedCard(card)
+  }
+
   const closeAllPopups = () => {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
+    setSelectedCard(null)
   }
 
   return (
@@ -41,7 +48,7 @@ function App() {
         onEditProfileClick={handleEditProfileClick}
         onAddPlaceClick={handleAddPlaceClick}
         onEditAvatarClick={handleEditAvatarClick}
-
+        onCardClick={handleCardClick}
       />
       {/* footer elements */}
       <Footer />
@@ -139,7 +146,7 @@ function App() {
       {/* <!-- Popup to open the imagen of selected card --> */}
 
       {/* <!-- popup update image user me --> */}
-
+      {selectedCard?.url && <ImagePopup selectedCard={selectedCard} onClose={closeAllPopups} />}
       {/* <!-- popup confirm delete card --> */}
 
     </div>
