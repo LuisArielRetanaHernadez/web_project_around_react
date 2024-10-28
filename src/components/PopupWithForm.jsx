@@ -7,7 +7,7 @@ const PopupWithForm = (props) => {
   return (
     <div className={`popup ${props.selector}  ${props.isOpen ? 'popup--active' : ''}`}>
       <div className="popup__card">
-        <span className="icon popup__icon-close">
+        <span className="icon popup__icon-close" onClick={props.onClose}>
           <img
             className="icon__image popup__icon-close-image"
             src={closeImage}

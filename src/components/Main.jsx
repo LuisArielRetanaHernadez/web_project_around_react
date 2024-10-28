@@ -1,4 +1,4 @@
-import api from "../utils/Api.js"
+import api from "../utils/api.js"
 
 // images
 import plusImage from '../images/plus.svg'
