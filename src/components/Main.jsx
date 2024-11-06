@@ -120,7 +120,7 @@ const Main = ({
         <div className="elements__cards">
           {/* <!-- Card --> */}
           {cards.length > 0 && cards.map((card, index) => (
-            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} />
+            <Card key={card._id} _id={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} />
           ))}
         </div>
         <template id="template-card">

@@ -20,6 +20,7 @@ const Card = (props) => {
       likes: props.likes
     })
   }
+
   return (
     <figure class="card elements__card">
       {currentUser._id === props._id &&
@@ -37,7 +38,7 @@ const Card = (props) => {
       <figcaption class="card__about elements__photo-about">
         <p class="card__title">{props.title}</p>
         <div class="card__content-icon-and-likes">
-          <span class={cardLikeButtonClassName}>
+          <span class={cardLikeButtonClassName} onClick={() => props.onCardLike({ _id: props._id, likes: props.likes })}>
             <img
               class="card__icon-love-image card__icon-love-image_standar"
               src={heartImage}
