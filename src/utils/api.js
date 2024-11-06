@@ -77,6 +77,14 @@ class Api {
     return await Promise.reject(`Error: ${res.status}`);
   }
 
+  async changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.likeCard(cardId);
+    } else {
+      return this.likeCardDelete(cardId);
+    }
+  }
+
   // users
 
   async getUserInfo() {

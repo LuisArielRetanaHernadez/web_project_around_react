@@ -10,8 +10,10 @@ import heartImage from '../images/heart.svg'
 import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Card from "./Card.jsx"
+
+import { CurrentUserContext } from "../context/CurrentUserContext.js"
 
 
 const Main = ({
@@ -20,6 +22,8 @@ const Main = ({
   onEditAvatarClick,
   onCardClick
 }) => {
+
+  const currentUser = useContext(CurrentUserContext)
 
   const [userName, setUserName] = useState('')
   const [userDescription, setUserDescription] = useState('')
@@ -55,9 +59,10 @@ const Main = ({
   }, [])
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some(id => id === api.idUser)
+    const isLiked = card.likes.some(({ _id }) => _id === currentUser._id)
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      console.log(newCard)
       setCards((state) => state.map((c) => {
         if (c._id === newCard._id) {
           return newCard
