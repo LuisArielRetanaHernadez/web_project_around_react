@@ -11,7 +11,8 @@ const Card = (props) => {
 
   const currentUser = useContext(CurrentUserContext)
 
-
+  const isLiked = props.likes.some(i => i === currentUser._id)
+  const cardLikeButtonClassName = `icon card__icon-love ${isLiked && 'card__icon-love_active'}`
   const handleClick = () => {
     props.onCardClick({
       url: props.url,
@@ -36,7 +37,7 @@ const Card = (props) => {
       <figcaption class="card__about elements__photo-about">
         <p class="card__title">{props.title}</p>
         <div class="card__content-icon-and-likes">
-          <span class="icon card__icon-love">
+          <span class={cardLikeButtonClassName}>
             <img
               class="card__icon-love-image card__icon-love-image_standar"
               src={heartImage}
