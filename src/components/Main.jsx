@@ -54,6 +54,20 @@ const Main = ({
 
   }, [])
 
+  const handleCardLike = (card) => {
+    const isLiked = card.likes.some(id => id === api.idUser)
+
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      setCards((state) => state.map((c) => {
+        if (c._id === newCard._id) {
+          return newCard
+        } else {
+          return c
+        }
+      }))
+    })
+  }
+
   return (
     <main className="content">
       <section className="profile content__seccion">
@@ -106,7 +120,7 @@ const Main = ({
         <div className="elements__cards">
           {/* <!-- Card --> */}
           {cards.length > 0 && cards.map((card, index) => (
-            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} />
+            <Card key={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} />
           ))}
         </div>
         <template id="template-card">
