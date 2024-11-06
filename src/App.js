@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -6,13 +6,27 @@ import Main from './components/Main';
 import PopupWithForm from './components/PopupWithForm';
 import ImagePopup from './components/ImagePopup';
 
+import api from './utils/api';
+
 function App() {
+
+  const [currentUser, setCurrentUser] = useState(null)
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
 
   const [selectedCard, setSelectedCard] = useState(null)
+
+  useEffect(() => {
+    api.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res)
+      })
+      .catch((err) => {
+        setCurrentUser(null)
+      })
+  }, [])
 
 
   const handleEditAvatarClick = () => {
