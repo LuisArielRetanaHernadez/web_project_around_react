@@ -4,9 +4,15 @@ import heartImage from '../images/heart.svg'
 import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 
+import { CurrentUserContext } from '../context/CurrentUserContext'
+import { useContext } from 'react'
+
 const Card = (props) => {
+
+  const currentUser = useContext(CurrentUserContext)
+
+
   const handleClick = () => {
-    console.log('hizo click')
     props.onCardClick({
       url: props.url,
       title: props.title,
@@ -15,13 +21,15 @@ const Card = (props) => {
   }
   return (
     <figure class="card elements__card">
-      <span class="icon card__icon-delete">
-        <img
-          src={deleteImage}
-          alt="icon delete"
-          class="icon__image card__icon-delete-image"
-        />
-      </span>
+      {currentUser._id === props._id &&
+        <span class="icon card__icon-delete">
+          <img
+            src={deleteImage}
+            alt="icon delete"
+            class="icon__image card__icon-delete-image"
+          />
+        </span>}
+
       <div class="card__content-image elements__photo-content-image" onClick={() => handleClick()}>
         <img class="card__image" src={props.url} alt={props.title || 'ilustract'} />
       </div>

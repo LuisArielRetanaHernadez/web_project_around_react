@@ -10,7 +10,7 @@ import { CurrentUserContext } from './context/CurrentUserContext';
 
 import api from './utils/api';
 
-const userDateLoad = {
+const userDateInit = {
   _id: null,
   name: null,
   email: null,
@@ -19,13 +19,13 @@ const userDateLoad = {
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(userDateInit)
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
 
-  const [selectedCard, setSelectedCard] = useState(userDateLoad)
+  const [selectedCard, setSelectedCard] = useState(null)
 
   useEffect(() => {
     api.getUserInfo()
@@ -33,7 +33,7 @@ function App() {
         setCurrentUser(res)
       })
       .catch((err) => {
-        setCurrentUser(userDateLoad)
+        setCurrentUser(null)
       })
   }, [])
 
