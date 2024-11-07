@@ -42,6 +42,18 @@ function App() {
       .catch((err) => {
         setCurrentUser(null)
       })
+
+
+    const loadCardsInitial = async () => {
+      try {
+        const response = await api.getInitialCards()
+        setCards(response)
+      } catch (error) {
+
+      }
+    }
+
+    loadCardsInitial()
   }, [])
 
 
@@ -122,7 +134,7 @@ function App() {
   }
 
   const handleAddPlaceSubmit = (card) => {
-    api.addCard(card.name, card.link)
+    api.createCard(card.title, card.url)
       .then((newCard) => {
         setCards([newCard, ...cards])
         closeAllPopups()

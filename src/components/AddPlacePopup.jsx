@@ -6,7 +6,7 @@ const AddPlacePopup = (props) => {
     e.preventDefault()
     const title = e.target.title.value
     const url = e.target.url.value
-    props.onAddPlace({ title, url })
+    props.onAddPlaceSubmit({ title, url })
     e.target.reset()
     props.onClose()
   }

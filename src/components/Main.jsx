@@ -20,7 +20,10 @@ const Main = ({
   onEditProfileClick,
   onAddPlaceClick,
   onEditAvatarClick,
-  onCardClick
+  onCardClick,
+  cards,
+  onCardLike,
+  onCardDelete
 }) => {
 
   const currentUser = useContext(CurrentUserContext)
@@ -29,7 +32,6 @@ const Main = ({
   const [userDescription, setUserDescription] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
 
-  const [cards, setCards] = useState([])
 
   useEffect(() => {
     const loadInformationUserCurrent = async () => {
@@ -43,41 +45,10 @@ const Main = ({
       }
     }
 
-    const loadCardsInitial = async () => {
-      try {
-        const response = await api.getInitialCards()
-        setCards(response)
-      } catch (error) {
-
-      }
-    }
-
-    loadCardsInitial()
 
     loadInformationUserCurrent()
 
   }, [])
-
-  const handleCardLike = (card) => {
-    const isLiked = card.likes.some(({ _id }) => _id === currentUser._id)
-
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      console.log(newCard)
-      setCards((state) => state.map((c) => {
-        if (c._id === newCard._id) {
-          return newCard
-        } else {
-          return c
-        }
-      }))
-    })
-  }
-
-  const handleCardDelete = (id) => {
-    api.deleteCard(id).then(() => {
-      setCards((state) => state.filter((card) => card._id !== id))
-    })
-  }
 
   return (
     <main className="content">
@@ -131,7 +102,7 @@ const Main = ({
         <div className="elements__cards">
           {/* <!-- Card --> */}
           {cards.length > 0 && cards.map((card, index) => (
-            <Card key={card._id} _id={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+            <Card key={card._id} _id={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />
           ))}
         </div>
         <template id="template-card">
