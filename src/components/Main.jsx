@@ -73,6 +73,12 @@ const Main = ({
     })
   }
 
+  const handleCardDelete = (id) => {
+    api.deleteCard(id).then(() => {
+      setCards((state) => state.filter((card) => card._id !== id))
+    })
+  }
+
   return (
     <main className="content">
       <section className="profile content__seccion">
@@ -125,7 +131,7 @@ const Main = ({
         <div className="elements__cards">
           {/* <!-- Card --> */}
           {cards.length > 0 && cards.map((card, index) => (
-            <Card key={card._id} _id={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} />
+            <Card key={card._id} _id={card._id} title={card.name} url={card.link} likes={card.likes} isLikes={false} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
           ))}
         </div>
         <template id="template-card">

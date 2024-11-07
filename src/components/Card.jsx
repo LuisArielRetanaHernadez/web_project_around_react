@@ -25,7 +25,7 @@ const Card = (props) => {
   return (
     <figure class="card elements__card">
       {currentUser._id === props._id &&
-        <span class="icon card__icon-delete">
+        <span class="icon card__icon-delete" onClick={() => props.onCardDelete(props._id)}>
           <img
             src={deleteImage}
             alt="icon delete"
