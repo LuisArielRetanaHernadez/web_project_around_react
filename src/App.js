@@ -11,6 +11,7 @@ import { CurrentUserContext } from './context/CurrentUserContext';
 import api from './utils/api';
 import EdithProfilePopup from './components/EdithProfilePopup';
 import EditAvatarPopup from './components/EditAvatarPopup';
+import AddPlacePopup from './components/AddPlacePopup';
 
 const userDateInit = {
   _id: null,
@@ -28,6 +29,9 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
 
   const [selectedCard, setSelectedCard] = useState(null)
+
+  const [cards, setCards] = useState([])
+
 
   useEffect(() => {
     api.getUserInfo()
@@ -94,6 +98,40 @@ function App() {
       })
   }
 
+  // cards
+
+  const handleCardLike = (card) => {
+    const isLiked = card.likes.some(({ _id }) => _id === currentUser._id)
+
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      console.log(newCard)
+      setCards((state) => state.map((c) => {
+        if (c._id === newCard._id) {
+          return newCard
+        } else {
+          return c
+        }
+      }))
+    })
+  }
+
+  const handleCardDelete = (id) => {
+    api.deleteCard(id).then(() => {
+      setCards((state) => state.filter((card) => card._id !== id))
+    })
+  }
+
+  const handleAddPlaceSubmit = (card) => {
+    api.addCard(card.name, card.link)
+      .then((newCard) => {
+        setCards([newCard, ...cards])
+        closeAllPopups()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <div class="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -105,12 +143,17 @@ function App() {
           onAddPlaceClick={handleAddPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
           onCardClick={handleCardClick}
+
+          cards={cards}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
         />
         {/* footer elements */}
         <Footer />
         {/* <!-- Popup to open the create card form --> */}
 
-        <PopupWithForm title="Agregar una nueva tarjeta" selector=".popup--create-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} >
+        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlaceSubmit={handleAddPlaceSubmit} />
+        {/* <PopupWithForm title="Agregar una nueva tarjeta" selector=".popup--create-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} >
           <form className="form popup__form" action="">
             <div className="form__field-component">
               <input
@@ -152,7 +195,7 @@ function App() {
               Guardar
             </button>
           </form>
-        </PopupWithForm>
+        </PopupWithForm> */}
         {/* <!-- Popup to open the update profile form --> */}
         <EdithProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
         {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
