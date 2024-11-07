@@ -30,6 +30,7 @@ function App() {
   useEffect(() => {
     api.getUserInfo()
       .then((res) => {
+        console.log(res)
         setCurrentUser(res)
       })
       .catch((err) => {
