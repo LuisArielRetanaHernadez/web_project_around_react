@@ -9,6 +9,7 @@ import ImagePopup from './components/ImagePopup';
 import { CurrentUserContext } from './context/CurrentUserContext';
 
 import api from './utils/api';
+import EdithProfilePopup from './components/EdithProfilePopup';
 
 const userDateInit = {
   _id: null,
@@ -123,8 +124,8 @@ function App() {
           </form>
         </PopupWithForm>
         {/* <!-- Popup to open the update profile form --> */}
-
-        <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
+        <EdithProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+        {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
           <form className="form popup__form" action="">
             <div className="form__field-component">
               <input
@@ -165,7 +166,7 @@ function App() {
               Guardar
             </button>
           </form>
-        </PopupWithForm>
+        </PopupWithForm> */}
 
 
         {/* <!-- popup update image user me --> */}
