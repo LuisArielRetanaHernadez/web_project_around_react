@@ -1,18 +1,23 @@
+import { useRef } from "react"
 import PopupWithForm from "./PopupWithForm"
 
 const EditAvatarPopup = (props) => {
 
+  const avatarRef = useRef(null)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    props.onUpdateAvatar({ avatar: avatarRef.current.value })
+    props.onClose()
+  }
+
 
   return (
     <PopupWithForm
-      name="avatar"
-      title="Обновить аватар"
-      buttonText="Сохранить"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
-      onSubmit={props.handleSubmit}
+      title="Actualizar tu perfil" selector=".popup--upload-avatar-user-me" isOpen={props.isOpen} onClose={props.onClose}
     >
-      <form className="form popup__form" action="">
+      <form className="form popup__form" action="" onSubmit={handleSubmit}>
         <div className="form__field-component">
           <input
             className="form__input popup__form-input"
@@ -20,6 +25,7 @@ const EditAvatarPopup = (props) => {
             name="avatar"
             type="url"
             required
+            ref={avatarRef}
           />
           <span
             className="form__error-message"

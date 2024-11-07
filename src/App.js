@@ -10,6 +10,7 @@ import { CurrentUserContext } from './context/CurrentUserContext';
 
 import api from './utils/api';
 import EdithProfilePopup from './components/EdithProfilePopup';
+import EditAvatarPopup from './components/EditAvatarPopup';
 
 const userDateInit = {
   _id: null,
@@ -71,6 +72,20 @@ function App() {
           ...currentUser,
           name: res.name,
           about: res.about
+        })
+        closeAllPopups()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handleUpdateAvatar = (avatar) => {
+    api.updateAvatarUser(avatar.avatar)
+      .then((res) => {
+        setCurrentUser({
+          ...currentUser,
+          avatar: res.avatar
         })
         closeAllPopups()
       })
@@ -185,8 +200,8 @@ function App() {
 
 
         {/* <!-- popup update image user me --> */}
-
-        <PopupWithForm title="Actualizar tu perfil" selector=".popup--upload-avatar-user-me" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+        {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--upload-avatar-user-me" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
           <form className="form popup__form" action="">
             <div className="form__field-component">
               <input
@@ -210,7 +225,7 @@ function App() {
               Guardar
             </button>
           </form>
-        </PopupWithForm>
+        </PopupWithForm> */}
 
         {/* <!-- Popup to open the imagen of selected card --> */}
 
