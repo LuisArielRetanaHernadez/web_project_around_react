@@ -10,7 +10,7 @@ import heartImage from '../images/heart.svg'
 import heartHoverImage from '../images/heart-hover.svg'
 import heartActiveImage from '../images/heart-active.svg'
 import closeImage from '../images/close.png'
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import Card from "./Card.jsx"
 
 import { CurrentUserContext } from "../context/CurrentUserContext.js"
@@ -27,28 +27,6 @@ const Main = ({
 }) => {
 
   const currentUser = useContext(CurrentUserContext)
-
-  const [userName, setUserName] = useState('')
-  const [userDescription, setUserDescription] = useState('')
-  const [userAvatar, setUserAvatar] = useState('')
-
-
-  useEffect(() => {
-    const loadInformationUserCurrent = async () => {
-      try {
-        const response = await api.getUserInfo()
-        setUserName(response.name)
-        setUserDescription(response.about)
-        setUserAvatar(response.avatar)
-      } catch (error) {
-
-      }
-    }
-
-
-    loadInformationUserCurrent()
-
-  }, [])
 
   return (
     <main className="content">

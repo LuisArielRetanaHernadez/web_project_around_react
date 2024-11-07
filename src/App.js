@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+
+// --> components 
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
-import PopupWithForm from './components/PopupWithForm';
 import ImagePopup from './components/ImagePopup';
 
-import { CurrentUserContext } from './context/CurrentUserContext';
 
-import api from './utils/api';
+// --> Popup
 import EdithProfilePopup from './components/EdithProfilePopup';
 import EditAvatarPopup from './components/EditAvatarPopup';
 import AddPlacePopup from './components/AddPlacePopup';
+
+// CurrentUserContext
+import { CurrentUserContext } from './context/CurrentUserContext';
+
+// Api
+import api from './utils/api';
 
 const userDateInit = {
   _id: null,
@@ -165,122 +172,15 @@ function App() {
         {/* <!-- Popup to open the create card form --> */}
 
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlaceSubmit={handleAddPlaceSubmit} />
-        {/* <PopupWithForm title="Agregar una nueva tarjeta" selector=".popup--create-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} >
-          <form className="form popup__form" action="">
-            <div className="form__field-component">
-              <input
-                type="text"
-                id="input-profile-name"
-                className="form__input popup__form-input"
-                name="title"
-                required
-                minlength="2"
-                maxlength="30"
-                placeholder="title"
-              />
-              <span
-                className="form__error-message"
-                id="input-profile-name-error"
-              ></span>
-            </div>
 
-            <div className="form__field-component">
-              <input
-                className="form__input popup__form-input"
-                id="input-profile-url-image"
-                name="url"
-                required
-                placeholder="url"
-                type="url"
-              />
-              <span
-                className="form__error-message"
-                id="input-profile-url-image-error"
-              ></span>
-            </div>
-
-            <button
-              className="button form__button-submit popup__button-submit"
-              id="button-update-profile"
-              type="submit"
-            >
-              Guardar
-            </button>
-          </form>
-        </PopupWithForm> */}
         {/* <!-- Popup to open the update profile form --> */}
         <EdithProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-        {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
-          <form className="form popup__form" action="">
-            <div className="form__field-component">
-              <input
-                className="form__input popup__form-input"
-                id={`input-profile-name`}
-                name="name"
-                required
-                minlength="7"
-                maxlength="15"
-              />
-              <span
-                className="form__error-message"
-                id={`input-profile-name-error`}
-              ></span>
-            </div>
 
-            <div className="form__field-component">
-              <input
-                className="form__input popup__form-input"
-                id={`input-profile-state`}
-                name="state"
-                required
-                minlength="7"
-                maxlength="15"
-                type="text"
-              />
-              <span
-                className="form__error-message"
-                id={`input-profile-state-error`}
-              ></span>
-            </div>
-
-            <button
-              className="button form__button-submit popup__button-submit"
-              id={`button-update-profile`}
-              type="submit"
-            >
-              Guardar
-            </button>
-          </form>
-        </PopupWithForm> */}
 
 
         {/* <!-- popup update image user me --> */}
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-        {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--upload-avatar-user-me" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-          <form className="form popup__form" action="">
-            <div className="form__field-component">
-              <input
-                className="form__input popup__form-input"
-                id="input-profile-url-image"
-                name="avatar"
-                type="url"
-                required
-              />
-              <span
-                className="form__error-message"
-                id="input-profile-url-image-error"
-              ></span>
-            </div>
 
-            <button
-              className="button form__button-submit popup__button-submit"
-              id="button-update-profile"
-              type="submit"
-            >
-              Guardar
-            </button>
-          </form>
-        </PopupWithForm> */}
 
         {/* <!-- Popup to open the imagen of selected card --> */}
 

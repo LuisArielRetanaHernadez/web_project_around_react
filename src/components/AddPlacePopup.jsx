@@ -4,10 +4,14 @@ const AddPlacePopup = (props) => {
 
   const handleAddPlaceSubmit = (e) => {
     e.preventDefault()
+
     const title = e.target.title.value
     const url = e.target.url.value
+
     props.onAddPlaceSubmit({ title, url })
+
     e.target.reset()
+
     props.onClose()
   }
 

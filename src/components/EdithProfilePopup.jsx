@@ -1,6 +1,11 @@
-import PopupWithForm from "./PopupWithForm";
 import { useState, useEffect, useContext } from 'react';
+
+// Context
 import { CurrentUserContext } from "../context/CurrentUserContext";
+
+// Popup
+import PopupWithForm from "./PopupWithForm";
+
 
 const EdithProfilePopup = (props) => {
   const currentUser = useContext(CurrentUserContext);

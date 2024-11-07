@@ -1,9 +1,7 @@
 import closeImage from '../images/close.png'
 
 const ImagePopup = (props) => {
-  console.log(props)
-  console.log(props.selectedCard)
-  console.log(props.selectedCard.url)
+
   return (
     <div className={`popup popup--imagen-card ${props.selectedCard.url ? 'popup--active' : ''}`}>
       <div className="popup__content">
