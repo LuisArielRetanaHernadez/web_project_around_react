@@ -64,6 +64,21 @@ function App() {
     setSelectedCard(null)
   }
 
+  const handleUpdateUser = (user) => {
+    api.updateUserInfo(user.name, user.about)
+      .then((res) => {
+        setCurrentUser({
+          ...currentUser,
+          name: res.name,
+          about: res.about
+        })
+        closeAllPopups()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <div class="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -124,7 +139,7 @@ function App() {
           </form>
         </PopupWithForm>
         {/* <!-- Popup to open the update profile form --> */}
-        <EdithProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+        <EdithProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
         {/* <PopupWithForm title="Actualizar tu perfil" selector=".popup--update-profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} >
           <form className="form popup__form" action="">
             <div className="form__field-component">

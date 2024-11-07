@@ -17,6 +17,13 @@ const EdithProfilePopup = (props) => {
       name,
       about: description,
     });
+
+    props.onUpdateUser({
+      name,
+      about: description,
+    })
+
+    props.onClose();
   }
 
   useEffect(() => {
@@ -30,16 +37,15 @@ const EdithProfilePopup = (props) => {
       title="Actualizar tu perfil"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}
     >
-      <form className="form popup__form" action="">
+      <form className="form popup__form" action="" onSubmit={handleSubmit}>
         <div className="form__field-component">
           <input
             className="form__input popup__form-input"
             id={`input-profile-name`}
             name="name"
-            value={name}
-
+            value={name || ""}
+            onChange={(e) => setName(e.target.value)}
             required
             minlength="7"
             maxlength="15"
@@ -55,7 +61,8 @@ const EdithProfilePopup = (props) => {
             className="form__input popup__form-input"
             id={`input-profile-state`}
             name="state"
-            value={description}
+            value={description || ""}
+            onChange={(e) => setDescription(e.target.value)}
             required
             minlength="7"
             maxlength="15"
